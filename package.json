@@ -1,0 +1,19 @@
+{
+  "name": "videojuegos-manuelmad",
+  "version": "1.0.0",
+  "description": "Registro de videojuegos jugados y por jugar",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manuelmad/API-REST.git"
+  },
+  "author": "manuelmad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manuelmad/API-REST/issues"
+  },
+  "homepage": "https://github.com/manuelmad/API-REST#readme"
+}
