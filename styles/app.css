@@ -176,6 +176,10 @@ h1 {
     border: 0.1rem solid var(--black);
 }
 
+.played-games-container img {
+    width: 14rem;
+}
+
 footer {
     height: 15rem;
     background-color: var(--black-game);

@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="./styles/app.css">
 </head>
 <body>
-    <header>
+    <header class="header">
         <div class="arrow-container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left inactive" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
               </svg>
         </div>
@@ -25,8 +25,8 @@
               </svg>
         </div>
     </header>
-    <main>
-        <section class="main-section-container inactive">
+    <main class="main">
+        <section class="main-section-container">
             <h1>manuelmadVideoGames</h1>
             <article class="main-img-container">
                 <div>
@@ -51,8 +51,9 @@
                 <input id="search_input" type="text" placeholder="Nombre del juego" />
             </article>
             <article class="played-games-container">
-                <div>
-                    <img src="" alt="">
+                <!-- <div>
+                    <img id="img2" src="" alt="">
+                    <span id="span2"></span>
                 </div>
                 <div>
                     <img src="" alt="">
@@ -62,7 +63,7 @@
                 </div>
                 <div>
                     <img src="" alt="">
-                </div>
+                </div> -->
             </article>
         </section>
     </main>
@@ -91,6 +92,8 @@
         </div>
     </footer>
     <script src="./src/secrets.js"></script>
+    <script src="./src/variables.js"></script>
+    <script src="./src/navegacion.js"></script>
     <script src="./src/main.js"></script>
 </body>
 </html>
