@@ -1,0 +1,206 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --font-family-general: 'Red Hat Display', sans-serif;
+    --font-family-titles: 'Dosis', sans-serif;
+
+    --red-nintendo: #fe0100; /*#e60012*/
+    --green-xbox: #105001; /*#107b10*/
+    --blue-playstation: #120c5a; /*#0070d1*/
+    --dark-red: #630001;
+    --light-gray: #c1bfbf;
+    --very-light-gray: #f8f6f6;
+    --black-game: #000407;
+    --white: #ffffff;
+    --black: #000000;
+
+    --width-main-buttons: 25rem;
+    --width-secundary-buttons: 15rem;
+    --width-game-related-container: 5rem;
+    --width-game-preview-container: 10rem;
+    --width-game-description-container: 25rem;
+}
+
+html {
+    font-family: var(--font-family-general);
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+}
+
+header {
+    height: 10vh;
+    background-color: var(--red-nintendo);
+    display: flex;
+}
+
+header div {
+    width: 33.33%;
+    display: flex;
+    align-items: center;
+}
+
+header .arrow-container {
+    justify-content: start;
+    padding-left: 1rem;
+    color: var(--white);
+}
+
+header img {
+    width: 10rem;
+}
+
+header .home-container {
+    justify-content: end;
+    padding-right: 1rem;
+    color: var(--white);
+}
+
+main {
+    height: 90vh;
+    background-color: var(--very-light-gray);
+    padding: 1rem 0;
+}
+
+h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    color: var(--black-game);
+}
+
+/* VISTA PRINCIPAL */
+
+.main-img-container div {
+    width: 30rem;
+    height: 40rem;
+    margin: 0 auto;
+}
+
+.main-img-container div img {
+    width: 30rem;
+    height: 40rem;
+    border-radius: 1rem;
+    /* opacity: 60%; */
+}
+
+/* MAIN BUTTONS */
+
+.main-buttons-container div {
+    text-align: center;
+}
+
+.main-buttons-container button {
+    width: var(--width-main-buttons);
+    border-radius: 1rem;
+    margin-top: 1rem;
+    height: 3.1rem;
+}
+
+#played_button {
+    /* background-color: var(--white);
+    border: 0.4rem solid var(--green-xbox); */
+    background-color: var(--green-xbox);
+    color: var(--white);
+}
+
+#playing_button {
+    /* background-color: var(--white);
+    border: 0.4rem solid var(--blue-playstation); */
+    background-color: var(--blue-playstation);
+    color: var(--white);
+}
+
+#to_play_button {
+    /* background-color: var(--white);
+    border: 0.4rem solid var(--dark-red); */
+    background-color: var(--dark-red);
+    color: var(--white);
+}
+
+#played_button:active {
+    /* box-shadow: 2px 2px 8px 1px var(--green-xbox) inset,
+                -2px -2px 8px 1px var(--green-xbox) inset;
+    background-color: white;
+    color: var(--green-xbox); */
+    font-size: 1.25rem;
+}
+
+#playing_button:active {
+    /* box-shadow: 2px 2px 8px 1px var(--blue-playstation) inset,
+                -2px -2px 8px 1px var(--blue-playstation) inset;
+    background-color: white;
+    color: var(--blue-playstation); */
+    font-size: 1.25rem;
+}
+
+#to_play_button:active {
+    /* box-shadow: 1px 1px 2px 0.5px var(--dark-red) ,
+                -1px -1px 2px 0.5px var(--dark-red) ; */
+    /* background-color: white;
+    color: var(--dark-red); */
+    font-size: 1.25rem;
+}
+
+/* VISTA DE JUEGOS JUGADOS */
+
+.played-section-container h2 {
+    text-align: center;
+}
+
+.search-input-container {
+    text-align: center;
+}
+
+#search_input {
+    width: var(--width-main-buttons);
+    border-radius: 1rem;
+    margin-top: 1rem;
+    height: 3.1rem;
+}
+
+.played-games-container {
+    margin: 4rem auto 0;
+    width: 30rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 20rem;
+}
+
+.played-games-container div {
+    border: 0.1rem solid var(--black);
+}
+
+footer {
+    height: 15rem;
+    background-color: var(--black-game);
+    color: var(--light-gray);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-content: center;
+}
+
+footer div {
+    padding: 1rem;
+}
+
+footer h2 {
+    margin-bottom: 1rem;
+}
+
+footer h3 {
+    margin-top: 0.6rem;
+}
+
+footer a {
+    color: var(--light-gray);
+}
+
+.inactive {
+    display: none;
+}

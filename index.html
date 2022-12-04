@@ -4,11 +4,92 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700;800&family=Red+Hat+Display:wght@400;500&display=swap" rel="stylesheet" />
     <title>manuelmadVideoGames</title>
     <link rel="stylesheet" href="./styles/app.css">
 </head>
 <body>
-    <h1>manuelmadVideoGames</h1>
+    <header>
+        <div class="arrow-container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left inactive" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+              </svg>
+        </div>
+        <div>
+            <img src="./img/logo.png" alt="logo personal">
+        </div>
+        <div class="home-container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill inactive" viewBox="0 0 16 16">
+                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+              </svg>
+        </div>
+    </header>
+    <main>
+        <section class="main-section-container inactive">
+            <h1>manuelmadVideoGames</h1>
+            <article class="main-img-container">
+                <div>
+                    <img src="./img/main-image.jpg" alt="Imagen Principal">
+                </div>
+            </article>
+            <article class="main-buttons-container">
+                <div>
+                    <button id="played_button">playED</button>
+                </div>
+                <div>
+                    <button id="playing_button">playING</button>
+                </div>
+                <div>
+                    <button id="to_play_button">TO play</button>
+                </div>
+            </article>
+        </section>
+        <section class="played-section-container">
+            <h2>playED Games</h2>
+            <article class="search-input-container">
+                <input id="search_input" type="text" placeholder="Nombre del juego" />
+            </article>
+            <article class="played-games-container">
+                <div>
+                    <img src="" alt="">
+                </div>
+                <div>
+                    <img src="" alt="">
+                </div>
+                <div>
+                    <img src="" alt="">
+                </div>
+                <div>
+                    <img src="" alt="">
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <h2>Créditos:</h2>
+            <h3>Instructor</h3>
+            <p>
+               <a href="https://platzi.com/profes/juandc/" target="_blank">juanDC</a>
+            </p>
+            <h3>API</h3>
+            <p>
+               <a href="https://rawg.io" target="_blank">rawg.io</a>
+            </p>
+
+        </div>
+        <div>
+            <h2>Información de contacto:</h2>
+            <h3>LinkedIn</h3>
+            <p><a href="https://linkedin.com/in/manuel-araujo-beltrán-994564153" target="_blank">Manuel Araujo</a></p>
+            <h3>Correo electrónico</h3>
+            <p>manuelmad1981@gmail.com</p>
+            <h3>GitHub</h3>
+            <p><a href="https://github.com/manuelmad" target="_blank">manuelmad</a></p>
+        </div>
+    </footer>
     <script src="./src/secrets.js"></script>
     <script src="./src/main.js"></script>
 </body>
