@@ -2,10 +2,23 @@ played_button.addEventListener('click', () => {
     location.hash = '#played';
 });
 
+playing_button.addEventListener('click', () => {
+    location.hash = '#playing';
+});
+
+toplay_button.addEventListener('click', () => {
+    location.hash = '#toplay';
+});
+
 arrowButton.addEventListener('click', () => {
     history.back();
     //location.hash = '#home';
 });
+
+homeButton.addEventListener('click', () => {
+    location.hash = '#home';
+});
+
 
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
@@ -16,12 +29,12 @@ function navigator() {
     if(location.hash.startsWith('#played')) {
         playedPage();
     }
-    // else if(location.hash.startsWith('#search=')) {
-    //     searchPage();
-    // }
-    // else if(location.hash.startsWith('#movie=')) {
-    //     movieDetailsPage();
-    // }
+    else if(location.hash.startsWith('#playing')) {
+        playingPage();
+    }
+    else if(location.hash.startsWith('#toplay')) {
+        toplayPage();
+    }
     // else if(location.hash.startsWith('#category=')) {
     //     categoriesPage();
     // }
@@ -36,21 +49,12 @@ function navigator() {
 function homePage() {
     main.style.height = '90vh';
     header.style.background = '#fe0100';
-    // headerSection.classList.remove('header-container--long');
-    // headerSection.style.background = '';
     arrowButton.classList.add('inactive');
-    // arrowBtn.classList.remove('header-arrow--white');
-    // headerTitle.classList.remove('inactive');
-    // headerCategoryTitle.classList.add('inactive');
-    // searchForm.classList.remove('inactive');
-
     mainSectionContainer.classList.remove('inactive');
-    // categoriesPreviewSection.classList.remove('inactive');
     playedSectionContainer.classList.add('inactive');
-    // movieDetailSection.classList.add('inactive');
-
-    // getTrendingMoviesPreview();
-    // getCategoriresPreview();
+    playingSectionContainer.classList.add('inactive');
+    toplaySectionContainer.classList.add('inactive');
+    homeButton.classList.add('inactive');
     console.log('Home!!!');
     location.hash = '#home';
 }
@@ -60,20 +64,42 @@ function playedPage() {
     header.style.background = '#105001';
     main.style.height = 'auto';
     mainSectionContainer.classList.add('inactive');
-    // headerSection.classList.remove('header-container--long');
-    // headerSection.style.background = '';
     arrowButton.classList.remove('inactive');
-    // arrowBtn.classList.remove('header-arrow--white');
-    // headerTitle.classList.add('inactive');
+    homeButton.classList.remove('inactive');
     playedSectionContainer.classList.remove('inactive');
-    // searchForm.classList.add('inactive');
+    playingSectionContainer.classList.add('inactive');
+    toplaySectionContainer.classList.add('inactive');
 
-    // trendingPreviewSection.classList.add('inactive');
-    // categoriesPreviewSection.classList.add('inactive');
-    // genericSection.classList.remove('inactive');
-    // movieDetailSection.classList.add('inactive');
+    // Invoco la función que renderiza los playED Games
+    showPlayedGames();
+}
 
-    // headerCategoryTitle.innerHTML = 'Tendencias';
+function playingPage() {
+    console.log('PLAYING!!!');
+    header.style.background = '#120c5a';
+    main.style.height = 'auto';
+    mainSectionContainer.classList.add('inactive');
+    arrowButton.classList.remove('inactive');
+    homeButton.classList.remove('inactive');
+    playedSectionContainer.classList.add('inactive');
+    playingSectionContainer.classList.remove('inactive');
+    toplaySectionContainer.classList.add('inactive');
 
-    // getTrendingMovies();
+    // Invoco la función que renderiza los playING Games
+    showPlayingGames();
+}
+
+function toplayPage() {
+    console.log('TO PLAY!!!');
+    header.style.background = '#630001';
+    main.style.height = 'auto';
+    mainSectionContainer.classList.add('inactive');
+    arrowButton.classList.remove('inactive');
+    homeButton.classList.remove('inactive');
+    playedSectionContainer.classList.add('inactive');
+    playingSectionContainer.classList.add('inactive');
+    toplaySectionContainer.classList.remove('inactive');
+
+    // Invoco la función que renderiza los TO play Games
+    showToPlayingGames();
 }

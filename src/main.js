@@ -12,7 +12,7 @@ const API_URL_SONIC_SERIES = 'https://api.rawg.io/api/games/sonic-the-hedgehog/g
 // EJEMPLO DE URL QUE CONTIENE A LOS GÉNEROS
 // const API_URL_GENRES = 'https://api.rawg.io/api/genres?key=8d35f3d37cff4c7c816bce53458b3cb4';
 
-const API_URL_SEARCH = 'https://api.rawg.io/api/games?search=sonic-the-hedgehog-2&key=8d35f3d37cff4c7c816bce53458b3cb4';
+// const API_URL_SEARCH = 'https://api.rawg.io/api/games?search=sonic-the-hedgehog-2?key=8d35f3d37cff4c7c816bce53458b3cb4';
 
 // Array que contendrá todos los juegos de la serie de Sonic
 let sonic_series = [];
@@ -63,7 +63,11 @@ async function showSonicSeries() {
     console.log('Sonic Series', sonic_series);
 
     // Invoco la función que renderiza los playED Games
-    showPlayedGames();
+    // showPlayedGames();
+    // Invoco la función que renderiza los playING Games
+    // showPlayingGames();
+    // Invoco la función que renderiza los TO play Games
+    // showToPlayingGames();
 }
 
 showSonicSeries();
@@ -75,39 +79,83 @@ function showPlayedGames() {
             if(item.slug == playED_games[i]) {
                 const div = document.createElement('div');
                 const img = document.createElement('img');
-                img.src = item.background_image;
-                img.width =  140;
+                const img_name = item.slug;
+                const img_url = `../img/sonic/${img_name}.jpg`;
+                console.log('ruta de imagen', img_url);
+                img.src = img_url;
                 const span = document.createElement('span');
                 const spanText = document.createTextNode(item.name);
+                const span2 = document.createElement('span');
+                span2.innerText = 'X';
                 
                 span.appendChild(spanText);
                 div.appendChild(img);
                 div.appendChild(span);
+                div.appendChild(span2);
                 playedGamesContainer.appendChild(div);
             }
         });
     }
 }
 
-// showPlayedGames();
+// Función que muestra los playING Games
+function showPlayingGames() {
+    for(let i=0; i < playING_games.length; i++) {
+        sonic_series.forEach(item => {
+            if(item.slug == playING_games[i]) {
+                const div = document.createElement('div');
+                const img = document.createElement('img');
+                const img_name = item.slug;
+                const img_url = `../img/sonic/${img_name}.jpg`;
+                console.log('ruta de imagen', img_url);
+                img.src = img_url;
+                const span = document.createElement('span');
+                const spanText = document.createTextNode(item.name);
+                const span2 = document.createElement('span');
+                span2.innerText = 'X';
+                const span3 = document.createElement('span');
+                span3.innerText = 'Agregar a playED';
+                
+                span.appendChild(spanText);
+                div.appendChild(img);
+                div.appendChild(span);
+                div.appendChild(span2);
+                div.appendChild(span3);
+                playingGamesContainer.appendChild(div);
+            }
+        });
+    }
+}
 
-// async function showGame() {
-//     const res = await fetch(API_URL_GAME);
-//     const data = await res.json();
 
-//     if(res.status !== 200) {
-//         console.log("Hubo un error: " + res.status);
-//     } else {
-//         console.log('Games', data);
-//         const img2 = document.getElementById('img2');
-//         img2.src = data.background_image;
-//         const span2 = document.getElementById('span2');
-//         span2.innerHTML = data.name;
-//         console.log(data.results);
-//     }
-// }
-
-// showGame();
+// Función que muestra los playING Games
+function showToPlayingGames() {
+    for(let i=0; i < TOplay_games.length; i++) {
+        sonic_series.forEach(item => {
+            if(item.slug == TOplay_games[i]) {
+                const div = document.createElement('div');
+                const img = document.createElement('img');
+                const img_name = item.slug;
+                const img_url = `../img/sonic/${img_name}.jpg`;
+                console.log('ruta de imagen', img_url);
+                img.src = img_url;
+                const span = document.createElement('span');
+                const spanText = document.createTextNode(item.name);
+                const span2 = document.createElement('span');
+                span2.innerText = 'X';
+                const span3 = document.createElement('span');
+                span3.innerText = 'Agregar a playING';
+                
+                span.appendChild(spanText);
+                div.appendChild(img);
+                div.appendChild(span);
+                div.appendChild(span2);
+                div.appendChild(span3);
+                toplayGamesContainer.appendChild(div);
+            }
+        });
+    }
+}
 
 
 // async function showGenres() {
@@ -130,18 +178,18 @@ function showPlayedGames() {
 
 // showGenres();
 
-async function searchGame() {
-    const res = await fetch(API_URL_SEARCH);
-    const data = await res.json();
+// async function searchGame() {
+//     const res = await fetch(API_URL_SEARCH);
+//     const data = await res.json();
 
-    if(res.status !== 200) {
-        console.log("Hubo un error: " + res.status);
-    } else {
-        console.log('Search', data.results);
-    }
-}
+//     if(res.status !== 200) {
+//         console.log("Hubo un error: " + res.status);
+//     } else {
+//         console.log('Search', data.results);
+//     }
+// }
 
-searchGame();
+// searchGame();
 
 
 /* Notas */
