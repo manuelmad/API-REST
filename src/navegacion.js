@@ -35,6 +35,7 @@ function navigator() {
 
 function homePage() {
     main.style.height = '90vh';
+    main.style.background = '#f8f6f6';
     header.style.background = '#fe0100';
     // headerSection.classList.remove('header-container--long');
     // headerSection.style.background = '';
@@ -59,6 +60,7 @@ function playedPage() {
     console.log('PLAYED!!!');
     header.style.background = '#105001';
     main.style.height = 'auto';
+    main.style.background = '#c1bfbf';
     mainSectionContainer.classList.add('inactive');
     // headerSection.classList.remove('header-container--long');
     // headerSection.style.background = '';

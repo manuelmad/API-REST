@@ -50,8 +50,15 @@ function showPlayedGames() {
             if(item.slug == playED_games[i]) {
                 const div = document.createElement('div');
                 const img = document.createElement('img');
-                img.src = item.background_image;
-                img.width =  140;
+                img_name = item.slug;
+                img_url = `../img/sonic/${img_name}.jpg`;
+                //img.src = img_url;
+                if(img_url == undefined) {
+                    img.src = item.background_image;
+                } else {
+                    img.src = img_url;
+                }
+                //img.src = item.background_image;
                 const span = document.createElement('span');
                 const spanText = document.createTextNode(item.name);
                 
