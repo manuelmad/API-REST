@@ -46,10 +46,16 @@ const playingSectionContainer = document.querySelector('.playing-section-contain
 const playingGamesContainer = document.querySelector('.playing-games-container');
 const toplaySectionContainer = document.querySelector('.toplay-section-container');
 const toplayGamesContainer = document.querySelector('.toplay-games-container');
+const searchSectionContainer = document.querySelector('.search-section-container');
+const searchGamesContainer = document.querySelector('.search-games-container');
+const searchGamesInput = document.querySelector('.search-games');
 
 const played_button = document.getElementById('played_button');
 const playing_button = document.getElementById('playing_button');
 const toplay_button = document.getElementById('to_play_button');
+const search_button = document.getElementById('search_button');
+const search_game_button = document.getElementById('search_game_button');
+
 
 // ARRAYS DE CATEGORÍAS
 

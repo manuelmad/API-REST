@@ -10,7 +10,8 @@
 
     --red-nintendo: #fe0100; /*#e60012*/
     --green-xbox: #105001; /*#107b10*/
-    --blue-playstation: #120c5a; /*#0070d1*/
+    --blue-playstation: #120c5a;
+    --light-blue-playstation: #0070d1;
     --dark-red: #630001;
     --light-gray: #c1bfbf;
     --very-light-gray: #f8f6f6;
@@ -63,7 +64,8 @@ header .home-container {
 }
 
 main {
-    height: 90vh;
+    /* height: 90vh; */
+    min-height: 58rem;
     background-color: var(--very-light-gray);
     padding: 1rem 0;
 }
@@ -123,6 +125,13 @@ h1 {
     color: var(--white);
 }
 
+#search_button {
+    /* background-color: var(--white);
+    border: 0.4rem solid var(--dark-red); */
+    background-color: var(--light-blue-playstation);
+    color: var(--white);
+}
+
 #played_button:active {
     /* box-shadow: 2px 2px 8px 1px var(--green-xbox) inset,
                 -2px -2px 8px 1px var(--green-xbox) inset;
@@ -147,11 +156,12 @@ h1 {
     font-size: 1.25rem;
 }
 
-/* VISTA DE JUEGOS JUGADOS y JUGANDO */
+/* VISTA DE JUEGOS JUGADOS, JUGANDO, POR JUGAR Y SEARCH */
 
 .played-section-container h2,
 .playing-section-container h2,
-.toplay-section-container h2 {
+.toplay-section-container h2,
+.search-section-container h2 {
     text-align: center;
 }
 
@@ -168,7 +178,8 @@ h1 {
 
 .played-games-container,
 .playing-games-container,
-.toplay-games-container {
+.toplay-games-container,
+.search-games-container {
     margin: 4rem auto 0;
     width: 30rem;
     display: grid;
@@ -180,7 +191,8 @@ h1 {
 
 .played-games-container div,
 .playing-games-container div,
-.toplay-games-container div {
+.toplay-games-container div,
+.search-games-container div {
     background-color: var(--white);
     border-radius: 0.5rem;
     padding: 0.5rem;
@@ -190,15 +202,22 @@ h1 {
 
 .played-games-container img,
 .playing-games-container img,
-.toplay-games-container img {
+.toplay-games-container img,
+.search-games-container img  {
     width: 11rem;
     border-radius: 0.5rem;
     height: 15rem;
 }
 
+.search-input-container button {
+    border: none;
+    box-shadow: none;
+}
+
 .played-games-container span:nth-child(2),
 .playing-games-container span:nth-child(2),
-.toplay-games-container span:nth-child(2) {
+.toplay-games-container span:nth-child(2),
+.search-games-container span:nth-child(2) {
     font-weight: bold;
     display: inline-block;
 }
@@ -226,6 +245,32 @@ h1 {
     left: 0.5rem;
     border-radius: 0.2rem;
     background-color: var(--green-xbox);
+}
+
+.search-games-container span:nth-child(3),
+.search-games-container span:nth-child(4),
+.search-games-container span:nth-child(5) {
+    position: absolute;
+    top: 19.14rem;
+    width: 4rem;
+    padding: 0.1rem 0.3rem;
+    color: var(--white);
+    border-radius: 0.3rem;
+}
+
+.search-games-container span:nth-child(3) {
+    left: 0.5rem;
+    background-color: var(--green-xbox);
+}
+
+.search-games-container span:nth-child(4) {
+    left: 5.475rem;
+    background-color: var(--blue-playstation);
+}
+
+.search-games-container span:nth-child(5) {
+    right: 0.5rem;
+    background-color: var(--dark-red);
 }
 
 

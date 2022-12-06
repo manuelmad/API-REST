@@ -1,24 +1,36 @@
+// key=8d35f3d37cff4c7c816bce53458b3cb4
+
 // URL GENERAL
 const API_URL = 'https://api.rawg.io/api';
 
-// URL DEL JUEGO SONIC DE HEDGEHOG (ORIGINAL)
-const API_URL_SONIC = 'https://api.rawg.io/api/games/53551?key=8d35f3d37cff4c7c816bce53458b3cb4';
-
-// URL QUE CONTIENE A LOS JUEGOS QUE FORMAN PARTE DE LA SERIE DE SONIC (ORIGINAL)
-const API_URL_SONIC_SERIES = 'https://api.rawg.io/api/games/sonic-the-hedgehog/game-series?key=8d35f3d37cff4c7c816bce53458b3cb4';
-
-// const API_URL_GAME = 'https://api.rawg.io/api/games/sonic-3-and-knuckles?key=8d35f3d37cff4c7c816bce53458b3cb4';
-
-// EJEMPLO DE URL QUE CONTIENE A LOS GÉNEROS
-// const API_URL_GENRES = 'https://api.rawg.io/api/genres?key=8d35f3d37cff4c7c816bce53458b3cb4';
-
 // const API_URL_SEARCH = 'https://api.rawg.io/api/games?search=sonic-the-hedgehog-2?key=8d35f3d37cff4c7c816bce53458b3cb4';
 
-// Array que contendrá todos los juegos de la serie de Sonic
-let sonic_series = [];
-// let playED_games = [];
-// let playING_games = [];
-// let TOplay_games = [];
+
+// Array que contendrá todos los juegos del usuario en forma de objeto
+let allGamesObjects = [];
+
+async function getGame(list) {
+    for(let j=0; j < list.length; j++) {
+        let game = list[j];
+        let API_URL_GAME = `${API_URL}/games/${game}?key=${API_KEY}`;
+        let res = await fetch(API_URL_GAME);
+        let data = await res.json();
+        data.background_image = `../img/sonic/${game}.jpg`;
+
+        if(res.status !== 200) {
+            console.log("Hubo un error: " + res.status);
+        } else {
+            allGamesObjects.push(data);
+            // console.log('Juego '+(j+1), data.name);
+        }
+    }
+}
+getGame(playED_games);
+getGame(playING_games);
+getGame(TOplay_games);
+
+console.log('allGamesObjects', allGamesObjects);
+
 
 // Variables para recorrer todas las páginas de la serie de Sonic
 let new_url;
@@ -70,24 +82,25 @@ async function showSonicSeries() {
     // showToPlayingGames();
 }
 
-showSonicSeries();
+// showSonicSeries();
 
 // Función que muestra los playED Games
-function showPlayedGames() {
-    for(let i=0; i < playED_games.length; i++) {
-        sonic_series.forEach(item => {
-            if(item.slug == playED_games[i]) {
+function showPlayedGames(list) {
+    for(let i=0; i < list.length; i++) {
+        allGamesObjects.forEach(item => {
+            if(item.slug == list[i]) {
                 const div = document.createElement('div');
                 const img = document.createElement('img');
-                const img_name = item.slug;
-                const img_url = `../img/sonic/${img_name}.jpg`;
-                console.log('ruta de imagen', img_url);
-                img.src = img_url;
+                // const img_name = item.slug;
+                // const img_url = `../img/sonic/${img_name}.jpg`;
+                // console.log('ruta de imagen', img_url);
+                // img.src = img_url;
+                img.src = item.background_image;
                 const span = document.createElement('span');
                 const spanText = document.createTextNode(item.name);
                 const span2 = document.createElement('span');
                 span2.innerText = 'X';
-                
+
                 span.appendChild(spanText);
                 div.appendChild(img);
                 div.appendChild(span);
@@ -99,15 +112,15 @@ function showPlayedGames() {
 }
 
 // Función que muestra los playING Games
-function showPlayingGames() {
-    for(let i=0; i < playING_games.length; i++) {
-        sonic_series.forEach(item => {
-            if(item.slug == playING_games[i]) {
+function showPlayingGames(list) {
+    for(let i=0; i < list.length; i++) {
+        allGamesObjects.forEach(item => {
+            if(item.slug == list[i]) {
                 const div = document.createElement('div');
                 const img = document.createElement('img');
                 const img_name = item.slug;
                 const img_url = `../img/sonic/${img_name}.jpg`;
-                console.log('ruta de imagen', img_url);
+                // console.log('ruta de imagen', img_url);
                 img.src = img_url;
                 const span = document.createElement('span');
                 const spanText = document.createTextNode(item.name);
@@ -115,7 +128,7 @@ function showPlayingGames() {
                 span2.innerText = 'X';
                 const span3 = document.createElement('span');
                 span3.innerText = 'Agregar a playED';
-                
+
                 span.appendChild(spanText);
                 div.appendChild(img);
                 div.appendChild(span);
@@ -128,16 +141,16 @@ function showPlayingGames() {
 }
 
 
-// Función que muestra los playING Games
-function showToPlayingGames() {
-    for(let i=0; i < TOplay_games.length; i++) {
-        sonic_series.forEach(item => {
-            if(item.slug == TOplay_games[i]) {
+// Función que muestra los TOplay Games
+function showToPlayGames(list) {
+    for(let i=0; i < list.length; i++) {
+        allGamesObjects.forEach(item => {
+            if(item.slug == list[i]) {
                 const div = document.createElement('div');
                 const img = document.createElement('img');
                 const img_name = item.slug;
                 const img_url = `../img/sonic/${img_name}.jpg`;
-                console.log('ruta de imagen', img_url);
+                // console.log('ruta de imagen', img_url);
                 img.src = img_url;
                 const span = document.createElement('span');
                 const spanText = document.createTextNode(item.name);
@@ -145,7 +158,7 @@ function showToPlayingGames() {
                 span2.innerText = 'X';
                 const span3 = document.createElement('span');
                 span3.innerText = 'Agregar a playING';
-                
+
                 span.appendChild(spanText);
                 div.appendChild(img);
                 div.appendChild(span);
@@ -158,38 +171,46 @@ function showToPlayingGames() {
 }
 
 
-// async function showGenres() {
-//     const res = await fetch(API_URL_GENRES);
-//     const data = await res.json();
+async function searchGame() {
+    let query = searchGamesInput.value;
+    const res = await fetch(`${API_URL}/games?search=${query}&key=${API_KEY}`);
+    const data = await res.json();
 
-//     if(res.status !== 200) {
-//         console.log("Hubo un error: " + res.status);
-//     } else {
-//         console.log('Genres', data);
+    searchGamesContainer.innerHTML = '';
 
-//         const platforms = data.results[10];
-//         console.log('Platforms', platforms);
-//         const games = platforms.games;
-//         console.log('Game', games);
-//         const mario = games.find(item => item.name == 'Super Meat Boy');
-//         console.log('Super Meat Boy', mario);
-//     }
-// }
+    if(res.status !== 200) {
+        console.log("Hubo un error: " + res.status);
+    } else {
+        console.log('Search', data.results);
+        let searchedGames = data.results; // Arroja un array de 20 juegos
+        searchedGames.forEach(item => {
+            const div = document.createElement('div');
+            const img = document.createElement('img');
+            img.src = item.background_image;
+            const span = document.createElement('span');
+            const spanText = document.createTextNode(item.name);
 
-// showGenres();
+            const span2 = document.createElement('span');
+            span2.innerText = 'playED';
 
-// async function searchGame() {
-//     const res = await fetch(API_URL_SEARCH);
-//     const data = await res.json();
+            const span3 = document.createElement('span');
+            span3.innerText = 'playING';
 
-//     if(res.status !== 200) {
-//         console.log("Hubo un error: " + res.status);
-//     } else {
-//         console.log('Search', data.results);
-//     }
-// }
+            const span4 = document.createElement('span');
+            span4.innerText = 'TOplay';
 
-// searchGame();
+            span.appendChild(spanText);
+            div.appendChild(img);
+            div.appendChild(span);
+            div.appendChild(span2);
+            div.appendChild(span3);
+            div.appendChild(span4);
+
+            searchGamesContainer.appendChild(div);
+        });
+    }
+}
+
 
 
 /* Notas */
