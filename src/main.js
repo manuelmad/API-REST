@@ -3,7 +3,43 @@
 // URL GENERAL
 const API_URL = 'https://api.rawg.io/api';
 
-// const API_URL_SEARCH = 'https://api.rawg.io/api/games?search=sonic-the-hedgehog-2?key=8d35f3d37cff4c7c816bce53458b3cb4';
+const API_URL_USER = 'https://api.rawg.io/api/users/manuelmad';
+
+const API_URL_SEARCH = 'https://api.rawg.io/api/games?search=';
+
+// Función para obtener información de usuario
+async function getUserInfo() {
+    const res = await fetch(`${API_URL_USER}/games?key=${API_KEY}`);
+    const data = await res.json();
+
+    console.log('User', data);
+}
+
+getUserInfo();
+
+
+// Función para actualizar el status de un juego
+async function updateStatus() {
+    const res = await fetch(`${API_URL}/users/current/games/2552?key=${API_KEY}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            // 'X-API-KEY': API_KEY,
+        },
+        body:
+            {
+                "game": 2552,
+                "status": "beaten",
+                "platforms": []
+            }
+        
+    });
+    const data = await res.json();
+
+    console.log('Update', data);
+}
+
+updateStatus();
 
 
 // Array que contendrá todos los juegos del usuario en forma de objeto
@@ -86,6 +122,8 @@ async function showSonicSeries() {
 
 // Función que muestra los playED Games
 function showPlayedGames(list) {
+    playedGamesContainer.innerHTML = '';
+ 
     for(let i=0; i < list.length; i++) {
         allGamesObjects.forEach(item => {
             if(item.slug == list[i]) {
@@ -113,6 +151,8 @@ function showPlayedGames(list) {
 
 // Función que muestra los playING Games
 function showPlayingGames(list) {
+    playingGamesContainer.innerHTML = '';
+    
     for(let i=0; i < list.length; i++) {
         allGamesObjects.forEach(item => {
             if(item.slug == list[i]) {
@@ -143,6 +183,8 @@ function showPlayingGames(list) {
 
 // Función que muestra los TOplay Games
 function showToPlayGames(list) {
+    toplayGamesContainer.innerHTML = '';
+   
     for(let i=0; i < list.length; i++) {
         allGamesObjects.forEach(item => {
             if(item.slug == list[i]) {
@@ -173,7 +215,8 @@ function showToPlayGames(list) {
 
 async function searchGame() {
     let query = searchGamesInput.value;
-    const res = await fetch(`${API_URL}/games?search=${query}&key=${API_KEY}`);
+    // const res = await fetch(`${API_URL}/games?search=${query}&key=${API_KEY}`);
+    const res = await fetch(`${API_URL_SEARCH}${query}&key=${API_KEY}`);
     const data = await res.json();
 
     searchGamesContainer.innerHTML = '';
@@ -181,6 +224,7 @@ async function searchGame() {
     if(res.status !== 200) {
         console.log("Hubo un error: " + res.status);
     } else {
+        console.log('Search', data);
         console.log('Search', data.results);
         let searchedGames = data.results; // Arroja un array de 20 juegos
         searchedGames.forEach(item => {
@@ -206,11 +250,62 @@ async function searchGame() {
             div.appendChild(span3);
             div.appendChild(span4);
 
+            // Evento para que el span3 agregue el objeto al array gerenal y el slug al array playED
+            span2.addEventListener('click', () => {
+                const check = playED_games.find(element => element === item.slug);
+                console.log(check);
+                if(!check) {
+                    playED_games.push(item.slug);
+                    allGamesObjects.push(item);
+                    console.log('added to playED!');
+                    alert(`${item.name} agregado a  la lista de playED Games.`);
+                } else {
+                    console.log("Ya este juego fue agregado a playED Games!");
+                    alert("Ya este juego fue agregado a playED Games!");
+                }
+            });
+
+            // Evento para que el span3 agregue el objeto al array gerenal y el slug al array playING
+            span3.addEventListener('click', () => {
+                const check = playING_games.find(element => element === item.slug);
+                console.log(check);
+                if(!check) {
+                    playING_games.push(item.slug);
+                    allGamesObjects.push(item);
+                    console.log('added to playING!');
+                    alert(`${item.name} agregado a  la lista de playING Games.`);
+                } else {
+                    console.log("Ya este juego fue agregado a playING Games!");
+                    alert("Ya este juego fue agregado a playED Games!");
+                }
+
+            });
+
+            // Evento para que el span4 agregue el objeto al array gerenal y el slug al array TOplay
+            span4.addEventListener('click', () => {
+                const check = TOplay_games.find(element => element === item.slug);
+                console.log(check);
+                if(!check) {
+                    TOplay_games.push(item.slug);
+                    allGamesObjects.push(item);
+                    console.log('added to TOplay!');
+                    alert(`${item.name} agregado a  la lista de TOplay Games.`);
+                } else {
+                    console.log("Ya este juego fue agregado a TOplay Games!");
+                    alert("Ya este juego fue agregado a TOplay Games!");
+                }
+            
+            });
+
             searchGamesContainer.appendChild(div);
         });
     }
-}
 
+    // Inicio el conteo de las páginas de resultados
+    list_page = 1;
+    page_number.innerText = list_page;
+    console.log(list_page);
+}
 
 
 /* Notas */

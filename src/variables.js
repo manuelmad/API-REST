@@ -55,6 +55,9 @@ const playing_button = document.getElementById('playing_button');
 const toplay_button = document.getElementById('to_play_button');
 const search_button = document.getElementById('search_button');
 const search_game_button = document.getElementById('search_game_button');
+const next_page_button = document.getElementById('next_page_button');
+const page_number = document.getElementById('page_number');
+const previous_page_button = document.getElementById('previous_page_button');
 
 
 // ARRAYS DE CATEGORÍAS

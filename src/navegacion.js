@@ -19,6 +19,10 @@ search_game_button.addEventListener('click', () => {
     searchGame();
 });
 
+next_page_button.addEventListener('click', nextPage);
+
+previous_page_button.addEventListener('click', previousPage);
+
 arrowButton.addEventListener('click', () => {
     history.back();
     //location.hash = '#home';
@@ -132,4 +136,108 @@ function searchPage() {
 
     // let query = location.hash.split('=');
     // Invoco la función que renderiza los Games buscados
+}
+
+// Variable para guardar el númeor de página actual
+let list_page;
+
+// Función para ver siguiente página de la búsqueda
+async function nextPage() {
+    let query = searchGamesInput.value;
+
+    let next_page = list_page + 1;
+    const res = await fetch(`${API_URL_SEARCH}${query}&page=${next_page}&key=${API_KEY}`);
+    if(res.status !== 200) {
+        console.log("Hubo un error: " + res.status);
+        alert("Has llegado a la última página");
+        return;
+    }
+    else {
+        const data = await res.json();
+        list_page = list_page+1;
+        page_number.innerText = list_page;
+        console.log(list_page);
+    
+        searchGamesContainer.innerHTML = '';
+
+        console.log('Search', data);
+        console.log('Search', data.results);
+        let searchedGames = data.results; // Arroja un array de 20 juegos
+        searchedGames.forEach(item => {
+            const div = document.createElement('div');
+            const img = document.createElement('img');
+            img.src = item.background_image;
+            const span = document.createElement('span');
+            const spanText = document.createTextNode(item.name);
+
+            const span2 = document.createElement('span');
+            span2.innerText = 'playED';
+
+            const span3 = document.createElement('span');
+            span3.innerText = 'playING';
+
+            const span4 = document.createElement('span');
+            span4.innerText = 'TOplay';
+
+            span.appendChild(spanText);
+            div.appendChild(img);
+            div.appendChild(span);
+            div.appendChild(span2);
+            div.appendChild(span3);
+            div.appendChild(span4);
+
+            searchGamesContainer.appendChild(div);
+        });
+    }
+}
+
+
+// Función para ver anterior página de la búsqueda
+async function previousPage() {
+    let query = searchGamesInput.value;
+
+    let previous_page = list_page - 1;
+    const res = await fetch(`${API_URL_SEARCH}${query}&page=${previous_page}&key=${API_KEY}`);
+    if(res.status !== 200) {
+        console.log("Hubo un error: " + res.status);
+        alert("Has llegado a la primera página");
+        return;
+    }
+    else {
+        const data = await res.json();
+        list_page = list_page-1;
+        page_number.innerText = list_page;
+        console.log(list_page);
+    
+        searchGamesContainer.innerHTML = '';
+
+        console.log('Search', data);
+        console.log('Search', data.results);
+        let searchedGames = data.results; // Arroja un array de 20 juegos
+        searchedGames.forEach(item => {
+            const div = document.createElement('div');
+            const img = document.createElement('img');
+            img.src = item.background_image;
+            const span = document.createElement('span');
+            const spanText = document.createTextNode(item.name);
+
+            const span2 = document.createElement('span');
+            span2.innerText = 'playED';
+
+            const span3 = document.createElement('span');
+            span3.innerText = 'playING';
+
+            const span4 = document.createElement('span');
+            span4.innerText = 'TOplay';
+
+            span.appendChild(spanText);
+            div.appendChild(img);
+            div.appendChild(span);
+            div.appendChild(span2);
+            div.appendChild(span3);
+            div.appendChild(span4);
+
+            searchGamesContainer.appendChild(div);
+        });
+    }
 }
