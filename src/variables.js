@@ -49,6 +49,8 @@ const toplayGamesContainer = document.querySelector('.toplay-games-container');
 const searchSectionContainer = document.querySelector('.search-section-container');
 const searchGamesContainer = document.querySelector('.search-games-container');
 const searchGamesInput = document.querySelector('.search-games');
+const detailSectionContainer = document.querySelector('.detail-section-container');
+const detailGamesContainer = document.querySelector('.detail-games-container');
 
 const played_button = document.getElementById('played_button');
 const playing_button = document.getElementById('playing_button');

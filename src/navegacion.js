@@ -51,6 +51,9 @@ function navigator() {
     else if(location.hash.startsWith('#search')) {
         searchPage();
     }
+    else if(location.hash.startsWith('#game=')) {
+        detailPage();
+    }
     else {
         homePage();
     }
@@ -60,7 +63,6 @@ function navigator() {
 }
 
 function homePage() {
-    // main.style.height = '90vh';
     header.style.background = '#fe0100';
     arrowButton.classList.add('inactive');
     mainSectionContainer.classList.remove('inactive');
@@ -68,6 +70,7 @@ function homePage() {
     playingSectionContainer.classList.add('inactive');
     toplaySectionContainer.classList.add('inactive');
     searchSectionContainer.classList.add('inactive');
+    detailSectionContainer.classList.add('inactive');
     homeButton.classList.add('inactive');
 
     console.log('Home!!!');
@@ -77,7 +80,6 @@ function homePage() {
 function playedPage() {
     console.log('PLAYED!!!');
     header.style.background = '#105001';
-    // main.style.height = 'auto';
     mainSectionContainer.classList.add('inactive');
     arrowButton.classList.remove('inactive');
     homeButton.classList.remove('inactive');
@@ -85,6 +87,7 @@ function playedPage() {
     playingSectionContainer.classList.add('inactive');
     toplaySectionContainer.classList.add('inactive');
     searchSectionContainer.classList.add('inactive');
+    detailSectionContainer.classList.add('inactive');
 
     // Invoco la función que renderiza los playED Games
     showPlayedGames(playED_games);
@@ -93,7 +96,6 @@ function playedPage() {
 function playingPage() {
     console.log('PLAYING!!!');
     header.style.background = '#120c5a';
-    // main.style.height = 'auto';
     mainSectionContainer.classList.add('inactive');
     arrowButton.classList.remove('inactive');
     homeButton.classList.remove('inactive');
@@ -101,6 +103,7 @@ function playingPage() {
     playingSectionContainer.classList.remove('inactive');
     toplaySectionContainer.classList.add('inactive');
     searchSectionContainer.classList.add('inactive');
+    detailSectionContainer.classList.add('inactive');
 
     // Invoco la función que renderiza los playING Games
     showPlayingGames(playING_games);
@@ -109,7 +112,6 @@ function playingPage() {
 function toplayPage() {
     console.log('TO PLAY!!!');
     header.style.background = '#630001';
-    // main.style.height = 'auto';
     mainSectionContainer.classList.add('inactive');
     arrowButton.classList.remove('inactive');
     homeButton.classList.remove('inactive');
@@ -117,6 +119,7 @@ function toplayPage() {
     playingSectionContainer.classList.add('inactive');
     toplaySectionContainer.classList.remove('inactive');
     searchSectionContainer.classList.add('inactive');
+    detailSectionContainer.classList.add('inactive');
 
     // Invoco la función que renderiza los TO play Games
     showToPlayGames(TOplay_games);
@@ -125,7 +128,6 @@ function toplayPage() {
 function searchPage() {
     console.log('SEARCH!!!');
     header.style.background = '#0070d1';
-    // main.style.height = 'auto';
     mainSectionContainer.classList.add('inactive');
     arrowButton.classList.remove('inactive');
     homeButton.classList.remove('inactive');
@@ -133,9 +135,20 @@ function searchPage() {
     playingSectionContainer.classList.add('inactive');
     toplaySectionContainer.classList.add('inactive');
     searchSectionContainer.classList.remove('inactive');
+    detailSectionContainer.classList.add('inactive');
+}
 
-    // let query = location.hash.split('=');
-    // Invoco la función que renderiza los Games buscados
+function detailPage() {
+    console.log('GAME DETAIL!!!');
+    header.style.background = '#e60012';
+    mainSectionContainer.classList.add('inactive');
+    arrowButton.classList.remove('inactive');
+    homeButton.classList.remove('inactive');
+    playedSectionContainer.classList.add('inactive');
+    playingSectionContainer.classList.add('inactive');
+    toplaySectionContainer.classList.add('inactive');
+    searchSectionContainer.classList.add('inactive');
+    detailSectionContainer.classList.remove('inactive');
 }
 
 // Variable para guardar el númeor de página actual
@@ -155,7 +168,7 @@ async function nextPage() {
     else {
         const data = await res.json();
         list_page = list_page+1;
-        page_number.innerText = list_page;
+        page_number.innerText = `${list_page} / ${Math.ceil(data.count/20)}`;
         console.log(list_page);
     
         searchGamesContainer.innerHTML = '';
@@ -206,7 +219,7 @@ async function previousPage() {
     else {
         const data = await res.json();
         list_page = list_page-1;
-        page_number.innerText = list_page;
+        page_number.innerText = `${list_page} / ${Math.ceil(data.count/20)}`;
         console.log(list_page);
     
         searchGamesContainer.innerHTML = '';
