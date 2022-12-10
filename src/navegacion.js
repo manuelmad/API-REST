@@ -25,7 +25,6 @@ previous_page_button.addEventListener('click', previousPage);
 
 arrowButton.addEventListener('click', () => {
     history.back();
-    //location.hash = '#home';
 });
 
 homeButton.addEventListener('click', () => {
@@ -151,7 +150,7 @@ function detailPage() {
     detailSectionContainer.classList.remove('inactive');
 }
 
-// Variable para guardar el númeor de página actual
+// Variable para guardar el númeru de página actual, la cual toma el valor de 1 en la función trendingGames() de main.js
 let list_page;
 
 // Función para ver siguiente página de la búsqueda
@@ -161,20 +160,17 @@ async function nextPage() {
     let next_page = list_page + 1;
     const res = await fetch(`${API_URL_SEARCH}${query}&page=${next_page}&key=${API_KEY}`);
     if(res.status !== 200) {
-        console.log("Hubo un error: " + res.status);
-        alert("Has llegado a la última página");
+        console.log("There was an error: " + res.status);
+        alert("You have reached the last page");
         return;
     }
     else {
         const data = await res.json();
         list_page = list_page+1;
         page_number.innerText = `${list_page} / ${Math.ceil(data.count/20)}`;
-        console.log(list_page);
     
         searchGamesContainer.innerHTML = '';
 
-        console.log('Search', data);
-        console.log('Search', data.results);
         let searchedGames = data.results; // Arroja un array de 20 juegos
         searchedGames.forEach(item => {
             const div = document.createElement('div');
@@ -212,20 +208,17 @@ async function previousPage() {
     let previous_page = list_page - 1;
     const res = await fetch(`${API_URL_SEARCH}${query}&page=${previous_page}&key=${API_KEY}`);
     if(res.status !== 200) {
-        console.log("Hubo un error: " + res.status);
-        alert("Has llegado a la primera página");
+        console.log("There was an error: " + res.status);
+        alert("You have reached the first page");
         return;
     }
     else {
         const data = await res.json();
         list_page = list_page-1;
         page_number.innerText = `${list_page} / ${Math.ceil(data.count/20)}`;
-        console.log(list_page);
     
         searchGamesContainer.innerHTML = '';
 
-        console.log('Search', data);
-        console.log('Search', data.results);
         let searchedGames = data.results; // Arroja un array de 20 juegos
         searchedGames.forEach(item => {
             const div = document.createElement('div');

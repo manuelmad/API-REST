@@ -8,8 +8,8 @@
     --font-family-general: 'Red Hat Display', sans-serif;
     --font-family-titles: 'Dosis', sans-serif;
 
-    --red-nintendo: #fe0100; /*#e60012*/
-    --green-xbox: #105001; /*#107b10*/
+    --red-nintendo: #fe0100;
+    --green-xbox: #105001;
     --blue-playstation: #120c5a;
     --light-blue-playstation: #0070d1;
     --purple-gamecube: #5E4BB9;
@@ -92,7 +92,6 @@ h1 {
     width: 30rem;
     height: 40rem;
     border-radius: 1rem;
-    /* opacity: 60%; */
 }
 
 /* MAIN BUTTONS */
@@ -125,8 +124,6 @@ h1 {
     border: 0.4rem solid var(--green-xbox);
     color: var(--green-xbox);
     font-weight: bold;
-    /* background-color: var(--green-xbox);
-    color: var(--white); */
 }
 
 #playing_button {
@@ -134,8 +131,6 @@ h1 {
     border: 0.4rem solid var(--blue-playstation);
     color: var(--blue-playstation);
     font-weight: bold;
-    /* background-color: var(--blue-playstation);
-    color: var(--white); */
 }
 
 #to_play_button {
@@ -143,8 +138,6 @@ h1 {
     border: 0.4rem solid var(--dark-red);
     color: var(--dark-red);
     font-weight: bold;
-    /* background-color: var(--dark-red);
-    color: var(--white); */
 }
 
 #search_button {
@@ -152,8 +145,6 @@ h1 {
     border: 0.4rem solid var(--light-blue-playstation);
     color: var(--light-blue-playstation);
     font-weight: bold;
-    /* background-color: var(--light-blue-playstation);
-    color: var(--white); */
     margin-top: 2rem;
 }
 
@@ -265,7 +256,7 @@ h1 {
 .detail-games-container img {
     width: 20rem;
     border-radius: 0.5rem;
-    height: 15rem; /*28.6*/
+    height: 15rem;
 }
 
 .search-input-container button {
@@ -335,7 +326,6 @@ h1 {
 
 .playing-games-container span:nth-child(4),
 .toplay-games-container span:nth-child(4) {
-    /* font-weight: bold; */
     color: var(--white);
     position: absolute;
     cursor: pointer;
@@ -408,7 +398,6 @@ h1 {
 
 footer {
     height: 15rem;
-    /* height: auto; */
     background-color: var(--black-game);
     color: var(--light-gray);
     display: grid;
@@ -421,10 +410,6 @@ footer > div {
     text-align: center;
 }
 
-/* footer div:first-child {
-    padding-left: 3rem;
-} */
-
 footer h2 {
     margin-bottom: 1rem;
 }
@@ -436,16 +421,6 @@ footer h3 {
 footer a {
     color: var(--light-gray);
 }
-
-/* .credits {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.contact-info {
-    display: flex;
-    justify-content: space-evenly;
-} */
 
 .inactive {
     display: none;
