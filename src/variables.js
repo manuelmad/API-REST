@@ -47,6 +47,7 @@ const playingGamesContainer = document.querySelector('.playing-games-container')
 const toplaySectionContainer = document.querySelector('.toplay-section-container');
 const toplayGamesContainer = document.querySelector('.toplay-games-container');
 const searchSectionContainer = document.querySelector('.search-section-container');
+const trendingTitle = document.querySelector('.trending-title');
 const searchGamesContainer = document.querySelector('.search-games-container');
 const searchGamesInput = document.querySelector('.search-games');
 const detailSectionContainer = document.querySelector('.detail-section-container');
@@ -60,6 +61,8 @@ const search_game_button = document.getElementById('search_game_button');
 const next_page_button = document.getElementById('next_page_button');
 const page_number = document.getElementById('page_number');
 const previous_page_button = document.getElementById('previous_page_button');
+//const trending_button = document.getElementById('trending_button');
+
 
 
 // ARRAYS DE CATEGORÍAS

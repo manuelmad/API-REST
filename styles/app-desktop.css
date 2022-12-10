@@ -1,0 +1,23 @@
+.played-games-container,
+.playing-games-container,
+.toplay-games-container,
+.search-games-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 60rem;
+}
+
+.contact-info {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.linkedin {
+    grid-column: 2/3;
+}
+
+.email {
+    grid-column: 3/4;
+}
+
+.github {
+    grid-column: 4/5;
+}

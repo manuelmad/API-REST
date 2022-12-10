@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700;800&family=Red+Hat+Display:wght@400;500&display=swap" rel="stylesheet" />
     <title>manuelmadVideoGames</title>
     <link rel="stylesheet" href="./styles/app.css">
+    <link href="./styles/app-tablets.css" media="screen and (min-width: 600px)" type="text/css" rel="stylesheet" />
+    <link href="./styles/app-desktop.css" media="screen and (min-width: 1024px)" type="text/css" rel="stylesheet" />
 </head>
 <body>
     <header class="header">
@@ -17,7 +19,10 @@
               </svg>
         </div>
         <div>
-            <img src="./img/logo.png" alt="logo personal">
+            <a href="https://manuelmad.github.io/" target="_blank">
+                <img src="./img/logo.png" alt="logo personal">
+            </a>
+            <!-- <img src="./img/logo.png" alt="logo personal"> -->
         </div>
         <div class="home-container">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
@@ -44,15 +49,15 @@
                     <button id="to_play_button">TO play</button>
                 </div>
                 <div>
-                    <button id="search_button">Search Game</button>
+                    <button id="search_button">Search New Game</button>
                 </div>
             </article>
         </section>
         <section class="played-section-container">
             <h2>playED Games</h2>
             <article class="search-input-container">
-                <input class="search_input" type="text" placeholder="Nombre del juego"/>
-                <button id="played_search_button">🔍</button>
+                <!-- <input class="search_input" type="text" placeholder="Nombre del juego"/>
+                <button id="played_search_button">🔍</button> -->
             </article>
             <article class="played-games-container">
 
@@ -61,8 +66,8 @@
         <section class="playing-section-container">
             <h2>playING Games</h2>
             <article class="search-input-container">
-                <input class="search_input" type="text" placeholder="Nombre del juego"/>
-                <button id="playing_search_button">🔍</button>
+                <!-- <input class="search_input" type="text" placeholder="Nombre del juego"/>
+                <button id="playing_search_button">🔍</button> -->
             </article>
             <article class="playing-games-container">
 
@@ -71,8 +76,8 @@
         <section class="toplay-section-container">
             <h2>TO play Games</h2>
             <article class="search-input-container">
-                <input class="search_input" type="text" placeholder="Nombre del juego"/>
-                <button id="toplay_search_button">🔍</button>
+                <!-- <input class="search_input" type="text" placeholder="Nombre del juego"/>
+                <button id="toplay_search_button">🔍</button> -->
             </article>
             <article class="toplay-games-container">
 
@@ -81,7 +86,7 @@
         <section class="search-section-container">
             <h2>Search Games</h2>
             <article class="search-input-container">
-                <input class="search_input search-games" type="text" placeholder="Nombre del juego"/>
+                <input class="search_input search-games" type="text" placeholder="Game's Title"/>
                 <button id="search_game_button">🔍</button>
             </article>
             <article class="previous-next-container">
@@ -91,6 +96,7 @@
                 <span>Next</span>
                 <button id="next_page_button">></button>
             </article>
+            <p class="trending-title"></p>
             <article class="search-games-container">
 
             </article>
@@ -105,25 +111,38 @@
 
     <footer>
         <div>
-            <h2>Créditos:</h2>
-            <h3>Instructor</h3>
-            <p>
-               <a href="https://platzi.com/profes/juandc/" target="_blank">juanDC</a>
-            </p>
-            <h3>API</h3>
-            <p>
-               <a href="https://rawg.io" target="_blank">rawg.io</a>
-            </p>
-
+            <h2>Credits:</h2>
+            <article class="credits">
+                <div class="teacher">
+                    <h3>Teacher</h3>
+                    <p>
+                       <a href="https://platzi.com/profes/juandc/" target="_blank">juanDC</a>
+                    </p>
+                </div>
+                <div class="api">
+                    <h3>API</h3>
+                    <p>
+                       <a href="https://rawg.io" target="_blank">rawg.io</a>
+                    </p>
+                </div>
+            </article>
         </div>
         <div>
-            <h2>Información de contacto:</h2>
-            <h3>LinkedIn</h3>
-            <p><a href="https://linkedin.com/in/manuel-araujo-beltrán-994564153" target="_blank">Manuel Araujo</a></p>
-            <h3>Correo electrónico</h3>
-            <p>manuelmad1981@gmail.com</p>
-            <h3>GitHub</h3>
-            <p><a href="https://github.com/manuelmad/API-REST" target="_blank">manuelmad</a></p>
+            <h2>Contact Info.:</h2>
+            <article class="contact-info">
+                <div class="linkedin">
+                    <h3>LinkedIn</h3>
+                    <p><a href="https://linkedin.com/in/manuel-araujo-beltrán-994564153" target="_blank">Manuel Araujo</a></p>
+                </div>
+                <div class="email">
+                    <h3>Email</h3>
+                    <p>manuelmad1981@gmail.com</p>
+                </div>
+                <div class="github">
+                    <h3>GitHub</h3>
+                    <p><a href="https://github.com/manuelmad/API-REST" target="_blank">manuelmad</a></p>
+                </div>
+            </article>
         </div>
     </footer>
     <script src="./src/secrets.js"></script>

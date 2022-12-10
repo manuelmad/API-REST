@@ -1,0 +1,56 @@
+.bi-arrow-left {
+    margin-left: 3rem;
+}
+
+.bi-house-door-fill {
+    margin-right: 3rem;
+}
+
+.played-games-container,
+.playing-games-container,
+.toplay-games-container,
+.search-games-container {
+    width: 45rem;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.detail-games-container div {
+    width: 50rem;
+}
+
+.detail-games-container img {
+    width: 48rem;
+    height: 28.6rem;
+}
+
+.credits {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-content: center;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: center;
+}
+
+.teacher {
+    grid-column: 2/3;
+}
+
+.api {
+    grid-column: 3/4;
+}
+
+.linkedin {
+    grid-column: 1/2;
+}
+
+.email {
+    grid-column: 2/3;
+}
+
+.github {
+    grid-column: 3/4;
+}

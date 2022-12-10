@@ -3,26 +3,24 @@ const API_URL = 'https://api.rawg.io/api';
 
 const API_URL_USER = 'https://api.rawg.io/api/users/manuelmad';
 
+const API_URL_GAMES = 'https://api.rawg.io/api/games';
+
 const API_URL_SEARCH = 'https://api.rawg.io/api/games?search=';
 
-//Función para obtener el token de autorización
-// async function getAuthToken() {
-//     const res = await fetch(`${API_URL}/auth/login`, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({
-//             "email": email,
-//             "password": password,
-//         }),
-//     });
-//     const data = await res.json();
+// Inicio a la dependencia RAWGer
+// const Rawger = require('rawger');
 
-//     console.log('Autoirzación', data);
+// async function getOwned() {
+//     const rawger = await Rawger();
+//     const { users } = rawger;
+
+//     // Accedo a los juegos beaten de mi usuario
+//     const owned = await users('manuelmad').games('owned');
+//     console.log(owned);
 // }
 
-// getAuthToken();
+// getOwned();
+
 
 // Función para obtener información de usuario
 async function getUserInfo() {
@@ -36,29 +34,25 @@ getUserInfo();
 
 
 // Función para actualizar el status de un juego (NO ME FUNCIONA, 401 CORS)
-async function updateStatus() {
-    const res = await fetch(`${API_URL}/users/current/games/25807`, {
-        method: 'PATCH',
-        // mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/json',
-            'token': token,
-            // 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE',
-            // 'Access-Control-Allow-Credentials' : true,
-            // "Access-Control-Allow-Origin": "*",
-        },
-        body: {
-            // "game": "25807",
-            "status": "beaten",
-        },
-    });
-    const data = await res.json();
+// async function updateStatus() {
+//     const res = await fetch(`${API_URL}/users/current/games/25807`, {
+//         method: 'PATCH',
+//         headers: {
+//             "Content-Type": "application/json",
+//             "token": token,
+//         },
+//         body: {
+//             "game": 25807,
+//             "status": "beaten",
+//         },
+//     });
+//     const data = await res.json();
 
-    console.log('res', res);
-    console.log('data', data);
-}
+//     console.log('res', res);
+//     console.log('data', data);
+// }
 
-updateStatus();
+// updateStatus();
 
 
 // Array que contendrá todos los juegos del usuario en forma de objeto
@@ -172,6 +166,7 @@ function showPlayedGames(list) {
                     allGamesObjects.splice(indexObject, 1);
                     console.log('deleted from playED!');
                     alert(`${item.name} eliminado de la lista de playED Games.`);
+                    showPlayedGames(playED_games);
                 });
 
                 span.appendChild(spanText);
@@ -219,6 +214,7 @@ function showPlayingGames(list) {
                     allGamesObjects.splice(indexObject, 1);
                     console.log('deleted from playING!');
                     alert(`${item.name} eliminado de la lista de playING Games.`);
+                    showPlayingGames(playING_games);
                 });
 
                 // Evento para que el span3 agregue el slug al array playED y lo elimine del array playING
@@ -228,6 +224,7 @@ function showPlayingGames(list) {
                     playING_games.splice(indexSlug, 1);
                     console.log('added to playED! and deleted from playING');
                     alert(`${item.name} agregado a la lista de playED Games y eliminado de la lista playING Games.`);
+                    showPlayingGames(playING_games);
                 });
 
                 span.appendChild(spanText);
@@ -277,6 +274,7 @@ function showToPlayGames(list) {
                     allGamesObjects.splice(indexObject, 1);
                     console.log('deleted from TOplay!');
                     alert(`${item.name} eliminado de la lista de TOplay Games.`);
+                    showToPlayGames(TOplay_games);
                 });
                 
                 // Evento para que el span3 agregue el slug al array playING y lo elimine del array TOplay
@@ -286,6 +284,7 @@ function showToPlayGames(list) {
                     TOplay_games.splice(indexSlug, 1);
                     console.log('added to playING! and deleted from TOplay');
                     alert(`${item.name} agregado a la lista de playING Games y eliminado de la lista TOplay Games.`);
+                    showToPlayGames(TOplay_games);
                 });
 
                 span.appendChild(spanText);
@@ -307,6 +306,7 @@ async function searchGame() {
     const data = await res.json();
 
     searchGamesContainer.innerHTML = '';
+    trendingTitle.innerText = `Search results by "${query}"`;
 
     if(res.status !== 200) {
         console.log("Hubo un error: " + res.status);
@@ -451,6 +451,108 @@ async function showGameDetails(game) {
         detailGamesContainer.appendChild(div);
     }
 }
+
+
+// Función que muestra los juegos resultantes de la búsqueda
+async function trendingGames() {
+    const res = await fetch(`${API_URL_GAMES}?key=${API_KEY}`);
+    const data = await res.json();
+
+    searchGamesContainer.innerHTML = '';
+    trendingTitle.innerText = 'Trending Games';
+
+    if(res.status !== 200) {
+        console.log("Hubo un error: " + res.status);
+    } else {
+        console.log('Search', data);
+        console.log('Search', data.results);
+        let trendingGames = data.results; // Arroja un array de 20 juegos
+        trendingGames.forEach(item => {
+            const div = document.createElement('div');
+            const img = document.createElement('img');
+            img.src = item.background_image;
+            const span = document.createElement('span');
+            const spanText = document.createTextNode(item.name);
+
+            const span2 = document.createElement('span');
+            span2.innerText = 'playED';
+
+            const span3 = document.createElement('span');
+            span3.innerText = 'playING';
+
+            const span4 = document.createElement('span');
+            span4.innerText = 'TOplay';
+
+            span.appendChild(spanText);
+            div.appendChild(img);
+            div.appendChild(span);
+            div.appendChild(span2);
+            div.appendChild(span3);
+            div.appendChild(span4);
+
+            // Evento para que la imagen lleve a la vista de descripción del juego
+            img.addEventListener('click', () => { 
+                location.hash = '#game='+item.slug;
+                showGameDetails(item.slug);
+            });
+
+            // Evento para que el span3 agregue el objeto al array general y el slug al array playED
+            span2.addEventListener('click', () => {
+                const check = allGamesObjects.find(element => element.slug === item.slug);
+                console.log(check);
+                if(!check) {
+                    playED_games.push(item.slug);
+                    allGamesObjects.push(item);
+                    console.log('added to playED!');
+                    alert(`${item.name} agregado a la lista de playED Games.`);
+                } else {
+                    console.log("Este juego ya existe en la Aplicación!");
+                    alert("Este juego ya existe en la Aplicación!");
+                }
+            });
+
+            // Evento para que el span3 agregue el objeto al array general y el slug al array playING
+            span3.addEventListener('click', () => {
+                const check = allGamesObjects.find(element => element.slug === item.slug);
+                console.log(check);
+                if(!check) {
+                    playING_games.push(item.slug);
+                    allGamesObjects.push(item);
+                    console.log('added to playING!');
+                    alert(`${item.name} agregado a  la lista de playING Games.`);
+                } else {
+                    console.log("Este juego ya existe en la Aplicación!");
+                    alert("Este juego ya existe en la Aplicación!");
+                }
+
+            });
+
+            // Evento para que el span4 agregue el objeto al array general y el slug al array TOplay
+            span4.addEventListener('click', () => {
+                const check = allGamesObjects.find(element => element.slug === item.slug);
+                console.log(check);
+                if(!check) {
+                    TOplay_games.push(item.slug);
+                    allGamesObjects.push(item);
+                    console.log('added to TOplay!');
+                    alert(`${item.name} agregado a  la lista de TOplay Games.`);
+                } else {
+                    console.log("Este juego ya existe en en la Aplicación!");
+                    alert("Este juego ya existe en la Aplicación!");
+                }
+            });
+            searchGamesContainer.appendChild(div);
+        });
+    }
+
+    // Inicio el conteo de las páginas de resultados
+    list_page = 1;
+    page_number.innerText = `${list_page} / ${Math.ceil(data.count/20)}`;
+    console.log(list_page);
+}
+
+// Muestro siempre las tendencias en la página de search, hasta que el usuario haga una búsqueda.
+trendingGames();
 /* Notas */
 /*
     * No he podido usar PATCH y POST en la API, por lo cual tengo que hacer una base de datos local conformada por arrays que se reinician cada vez que actualizo la aplicación.

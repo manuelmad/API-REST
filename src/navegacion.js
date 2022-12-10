@@ -140,7 +140,7 @@ function searchPage() {
 
 function detailPage() {
     console.log('GAME DETAIL!!!');
-    header.style.background = '#e60012';
+    header.style.background = '#5E4BB9';
     mainSectionContainer.classList.add('inactive');
     arrowButton.classList.remove('inactive');
     homeButton.classList.remove('inactive');
