@@ -1,0 +1,75 @@
+.played-games-container,
+.playing-games-container,
+.toplay-games-container,
+.search-games-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 60rem;
+}
+
+section article .empty {
+    grid-column: 1/5;
+    font-size: 1.5rem;
+}
+
+.credits {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-content: center;
+}
+
+.teacher {
+    grid-column: 2/3;
+}
+
+.api {
+    grid-column: 3/4;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-content: center;
+}
+
+.linkedin {
+    grid-column: 2/3;
+    width: 10rem;
+}
+
+.email {
+    grid-column: 3/4;
+}
+
+.github {
+    grid-column: 4/5;
+    width: 10rem;
+}
+
+.contact-info div {
+    padding: 1rem 0.5rem 0;
+    margin-top: 1rem;
+}
+
+footer h2 {
+    font-size: 1.8rem;
+}
+
+footer h3 {
+    font-size: 1.5rem;
+}
+
+footer p {
+    font-size: 1.4rem;
+}
+
+.linkedin svg {
+    width: 1.6rem;
+}
+
+.email svg {
+    width: 1.7rem;
+}
+
+.github svg {
+    width: 1.6rem;
+}

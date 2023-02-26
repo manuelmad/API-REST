@@ -1,0 +1,53 @@
+.bi-arrow-left {
+    margin-left: 3rem;
+}
+
+.bi-house-door-fill {
+    margin-right: 3rem;
+}
+
+.played-games-container,
+.playing-games-container,
+.toplay-games-container,
+.search-games-container {
+    width: 45rem;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+section article .empty {
+    grid-column: 1/4;
+    font-size: 1.3rem;
+}
+
+.detail-games-container div {
+    width: 50rem;
+}
+
+.detail-games-container img {
+    width: 48rem;
+    height: 28.6rem;
+}
+
+footer article div {
+    margin-top: 2rem;
+}
+
+footer h3 {
+    font-size: 1.4rem;
+}
+
+footer p {
+    font-size: 1.3rem;
+}
+
+.linkedin svg {
+    width: 1.6rem;
+}
+
+.email svg {
+    width: 1.7rem;
+}
+
+.github svg {
+    width: 1.6rem;
+}

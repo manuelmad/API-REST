@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/manuelmad/API-REST/issues"
   },
-  "homepage": "https://github.com/manuelmad/API-REST#readme"
+  "homepage": "https://github.com/manuelmad/API-REST#readme",
+  "dependencies": {
+    "rawger": "^1.3.2"
+  }
 }
