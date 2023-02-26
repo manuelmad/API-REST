@@ -246,6 +246,29 @@ section article .empty {
     /* position: relative; */
 }
 
+.search-games-container {
+    margin: 2rem auto 0;
+}
+
+.trending-title {
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.detail-games-container div {
+    margin: 2rem auto 0;
+    width: 30rem;
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 1px 1px 2px 0.5px var(--light-gray) ,
+    -1px -1px 2px 0.5px var(--light-gray) ;
+    /* position: relative; */
+}
+
 .played-games-container div,
 .playing-games-container div,
 .toplay-games-container div,
@@ -281,6 +304,26 @@ section article .empty {
     width: 20rem;
     border-radius: 0.5rem;
     height: 15rem;
+    cursor: pointer;
+}
+
+.search-games-container img {
+    width: 11rem;
+    border-radius: 0.5rem;
+    height: 8rem;
+    cursor: pointer;
+}
+
+.detail-games-container img {
+    width: 20rem;
+    border-radius: 0.5rem;
+    height: 15rem;
+}
+
+.search-input-container button {
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
 }
 
 .search-input-container button {
