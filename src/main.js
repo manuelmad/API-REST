@@ -165,10 +165,6 @@ function toPlayGamesDelete(game) {
     let c = Object.values(JSON.parse(localStorage.getItem('toplay_games')));
     TOplay_games = c.map(item => item.slug);
 }
-// A la función anterior, le paso los array que creé en variables.js para agregar todos esos juegos a la lista general
-createFullDataBase(playED_games);
-createFullDataBase(playING_games);
-createFullDataBase(TOplay_games);
 
 
 // Función que muestra los playED Games

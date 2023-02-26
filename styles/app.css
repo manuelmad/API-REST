@@ -220,7 +220,7 @@ section article .empty {
 }
 
 .search-games-container {
-    margin: 2rem auto 4rem;
+    padding: 2rem auto 4rem;
 }
 
 .trending-title {
@@ -244,10 +244,6 @@ section article .empty {
     box-shadow: 1px 1px 2px 0.5px var(--light-gray) ,
     -1px -1px 2px 0.5px var(--light-gray) ;
     /* position: relative; */
-}
-
-.search-games-container {
-    margin: 2rem auto 0;
 }
 
 .trending-title {
